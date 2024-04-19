@@ -34,6 +34,6 @@ This repository contains the completed software development project undertaken f
 
 - Tony Achar: Project Leader
 - Sangharsha Dhital: Developer
-- Ali Adham : Developer
+- Ali Adham: Developer
 - Saad Islam: Developer
 
