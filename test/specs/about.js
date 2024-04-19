@@ -1,4 +1,4 @@
-import homePage from "../home-page.js";
+import homePage from "../pages/home-page.js";
 
 describe('About', () => {
     it('Open Browser and Assert About URL on the About Page', async() => {

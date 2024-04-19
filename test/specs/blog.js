@@ -1,4 +1,4 @@
-import blogPage from "../blog-page.js";
+import blogPage from "../pages/blog-page.js";
 
 describe('Blog', () => {
     it('Open Blog Page and Assert Text Length of Each Item', async() => {

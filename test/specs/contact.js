@@ -1,29 +1,27 @@
-import contactPage from "../contact-page.js";
-describe('Contact Page', () => {
-    it('Fill and Submit Contact Form', async () => {
-        // Navigate to the Contact Page
-        await browser.url('https://practice.sdetunicorns.com/contact/');
+import contactPage from "../pages/contact-page.js";
+import { faker } from '@faker-js/faker';
 
-        // Find unique IDs for input fields
-        const textBoxInput = $('#evf-277-field_ys0GeZISRs-1');
-        const emailInput = $('#evf-277-field_LbH5NxasXM-2');
-        const phoneInput = $('#evf-277-field_66FR384cge-3');
-        const messageInput = $('#evf-277-field_yhGx3FOwr2-4');
+describe('Contact', () => {
+    it('Open Contact Page, Fill in Info, and Submit', async() => {
+        //Open Contact Page
+        contactPage.open();
 
-        // Input values into the text boxes
-        await textBoxInput.setValue('Sangharsha Dhital');
-        await emailInput.setValue('dhitalsangharsha@gmail.com');
-        await phoneInput.setValue('1234567890');
-        await messageInput.setValue('Hello ! QA This is a test message. Typing .... Typing.... Typing.... Typing .... Typing.... Typing.... Typing .... Typing.... Typing.... Typing .... Typing.... Typing.... Typing .... Typing.... Typing.... Typing .... Typing.... Typing....');
+        //Fill in Info
+        //Name
+        await contactPage.contactName.setValue(faker.person.fullName());
+        //Email
+        await contactPage.contactEmail.setValue(faker.internet.email());
+        //Phone Number
+        await contactPage.contactPhoneNumber.setValue(faker.phone.number());
+        //Message
+        await contactPage.contactMessage.setValue(faker.lorem.paragraphs(4));
 
-        // Submit the form
-        await $('#evf-submit-277').click();
+        //Submit
+        await contactPage.btnSubmit.click();
+    });
 
-        // Assert the success message
-        const successMessage = await $('.everest-forms-notice--success');
-
-        // Assert the success message text
-        await expect(successMessage).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
-        
+    it('Assert Expected Success Message', async() => {
+        //Find and Assert Expected Message
+        await expect(contactPage.successAlert).toHaveText('Thanks for contacting us! We will be in touch with you shortly');
     });
 });

@@ -1,4 +1,4 @@
-import homePage from "../home-page.js";
+import homePage from "../pages/home-page.js";
 
 describe('Home', () => {
     it('Open Browser and Assert Title', async() => {
